@@ -1,0 +1,65 @@
+
+    <ax-form #form [updateOn]="'change'" [look]="'outline'" >
+        <div class="border border-[#E5E5E5] shadow-xs rounded-2xl p-6 flex flex-col gap-6">
+    <div>
+       <p class="text-[#09090B] font-semibold text-[16px] ">Create Task</p>
+       <p class="text-[#737373] text-[14px]">Describe the issue task your up to.</p>
+    </div>
+    <div>
+        <input type="text" >
+        <ax-form-field>
+            <ax-label>Task Name</ax-label>
+        <ax-text-box class="w-108" name="Task Name"  [(ngModel)]="taskName">
+            <ax-validation-rule rule="required"  ></ax-validation-rule>
+        </ax-text-box>
+        </ax-form-field>
+    </div>
+    <div>
+        <ax-form-field>
+            <ax-label>Describtion</ax-label>
+        <ax-text-area placeholder="Type your describtion here." [rows]="3" class="py-0" name="Describtion" [(ngModel)]="describtion">
+            <ax-validation-rule rule="required"></ax-validation-rule>
+        </ax-text-area>
+        </ax-form-field>
+    </div>
+    <div>
+       <ax-form-field>
+         <ax-label>Assignees</ax-label>
+        <ax-select-box placeholder="Select an assignee" [(ngModel)]="assignee">
+            <ax-search-box [look]="'fill'"></ax-search-box>
+            <ax-validation-rule message="feild cant be empty" rule="required" ></ax-validation-rule>
+            <ax-clear-button></ax-clear-button>
+        </ax-select-box>
+       </ax-form-field>
+       
+    </div>
+    <div>
+        <ax-form-field>
+            <ax-label>Due Date</ax-label>
+            <ax-datetime-box placeholder="Pick a date" picker="date" [(ngModel)]="date">
+                <ax-validation-rule rule="required"></ax-validation-rule>
+            </ax-datetime-box>
+        </ax-form-field>
+    </div>
+    <div>
+        <ax-form-field>
+            <ax-label>Priority</ax-label>
+        <div class="bg-[#F5F5F5] rounded-xl w-fit">
+                <ax-tabs >
+                    <ax-tab-item  class="rounded-[10px] " text="Low"></ax-tab-item>
+                    <ax-tab-item class="rounded-[10px] " text="Medium"></ax-tab-item>
+                    <ax-tab-item  class="rounded-[10px] " text="High"></ax-tab-item>
+                </ax-tabs>
+        </div>
+        </ax-form-field>
+    </div>
+    <div class="flex gap-3">
+        <ax-button text="Create Task" color="dark" class="shadow-sm" [type]="'submit'" (onClick)="addtask()"></ax-button>
+        <ax-button text="Cancel" class="shadow-sm" (onClick)="cancel()"></ax-button>
+    </div>
+    </div>
+</ax-form>
+
+
+
+
