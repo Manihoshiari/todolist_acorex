@@ -4,10 +4,15 @@ import { Addnewtask } from "../addnewtask/addnewtask";
 import { Form } from "../form/form";
 import { newTask } from '../todolist.model';
 import { Task } from "../task/task";
-
+import {
+  AXDragDirective,
+  AXDropListDirective,
+  AXDropListDroppedEvent,
+  moveItemInArray,
+} from '@acorex/cdk/drag-drop';
 @Component({
   selector: 'app-main',
-  imports: [Header, Addnewtask, Form, Task],
+  imports: [Header, Addnewtask, Form, Task, AXDropListDirective, AXDragDirective],
   templateUrl: './main.html',
   styleUrl: './main.css',
 })
@@ -33,5 +38,13 @@ export class Main {
     })
     this.visible=false
 
+  }
+  droplist(e:AXDropListDroppedEvent){
+const currentArray=this.tasks
+ moveItemInArray(currentArray, e.previousIndex, e.currentIndex);
+  }
+  search(e:string){
+    console.log(e);
+    
   }
 }

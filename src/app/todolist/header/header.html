@@ -1,4 +1,5 @@
 <header class="pt-16">
+   
     <div class="flex justify-between">
         <div>
         <p class="font-semibold text-2xl text-[#09090B] leading-[150%]">Welcome Back!</p>
@@ -10,7 +11,7 @@
 </header>
 @if (tasks().length>0||!visible) {
     <div class="flex justify-between pt-8">
-        <ax-text-box class="w-full sm:w-[320px]" placeholder="Filter the tasks..."></ax-text-box>
+        <ax-text-box class="w-full sm:w-[320px]" placeholder="Filter the tasks..." (onValueChanged)="search($event)"></ax-text-box>
         <ax-button color="dark" class="" text="Add Task" (onClick)="openform()"></ax-button>
     </div> 
 }

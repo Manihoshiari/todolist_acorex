@@ -1,19 +1,19 @@
 <div class="flex flex-col min-h-screen">
-    <app-header (open)="openForm()" [tasks]="tasks" [visible]="visible"></app-header>
+    <app-header (searchvalue)="search($event)" (open)="openForm()" [tasks]="tasks" [visible]="visible"></app-header>
     @if (!visible&& tasks.length===0) {
         <div class=" flex justify-center items-center grow">
         <app-addnewtask (openForm)="openForm()"></app-addnewtask>
     </div>
     }
     @if (visible) {
-        <div class="flex justify-center">
+        <div class="flex justify-center grow items-center">
             <app-form (formValue)="formValue($event)" (closeform)="closeForm()"></app-form>
         </div>
     }
     @if (!visible) {
-       <div class="grid sm:grid-cols-3 2xl:grid-cols-4 grid-cols-1 gap-4 items-stretch pt-8">
+       <div axDropList class="grid sm:grid-cols-3 2xl:grid-cols-4 grid-cols-1 gap-4 items-stretch pt-8" [dropListOrientation]="'horizontal'" (dropListDropped)="droplist($event)">
          @for (item of tasks; track $index) {
-            <app-task [tasks]="item"></app-task>
+            <app-task axDrag [tasks]="item"></app-task>
         }
 
        </div>
