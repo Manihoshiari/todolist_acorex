@@ -2,9 +2,9 @@
   <div class="flex justify-between">
     <div
       class="text-[12px] font-semibold text-[#1447E6] bg-[#EFF6FF] py-0.5 px-2 rounded-lg"
-      [ngClass]="[textcolor, bgcolor]"
+      [ngClass]="[textcolor(), bgcolor()]"
     >
-      <ax-badge [color]="badgecolor"></ax-badge> {{ tasks().taskstats }}
+      <ax-badge [color]="badgecolor()"></ax-badge> {{ tasks().taskstats }}
     </div>
     <ax-button [look]="'link'" class="ax-sm">
       <ax-icon class="fa-solid fa-ellipsis-vertical text-[#737373]"></ax-icon>

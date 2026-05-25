@@ -22,7 +22,7 @@
       [dropListOrientation]="'horizontal'"
       (dropListDropped)="droplist($event)"
     >
-      @for (item of alltasks(); track $index) {
+      @for (item of allTasks(); track $index) {
         <app-task axDrag (delete)="deletetask($event)" [tasks]="item"></app-task>
       }
     </div>

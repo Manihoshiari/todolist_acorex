@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, output, StaticClassSansProvider } from '@angular/core';
+import { Component, inject, input, OnInit, output, signal, StaticClassSansProvider } from '@angular/core';
 import { newTask } from '../todolist.model';
 import { DatePipe, NgClass } from '@angular/common';
 import { AXBadgeComponent } from '@acorex/components/badge';
@@ -33,30 +33,30 @@ import { todolistService } from '../todolist.service';
 })
 export class Task {
   tasks = input.required<newTask>();
-  textcolor: string = '';
-  bgcolor: string = '';
+  textcolor=signal<string>('');
+  bgcolor=signal<string>('');
   todoservice = inject(todolistService);
-  badgecolor: string = 'primary';
+  badgecolor=signal<string>('primary');
   delete = output<string>();
   setstatus(e: any) {
     this.tasks().taskstats = e.item.text;
 
     if (this.tasks().taskstats === 'Canceled') {
-      this.textcolor = 'text-red-500';
-      this.badgecolor = 'danger';
-      this.bgcolor = 'bg-[#FEF2F2]';
+      this.textcolor.set('text-red-500');
+      this.badgecolor.set('danger');
+      this.bgcolor.set('bg-[#FEF2F2]');
     } else if (this.tasks().taskstats === 'Backlog') {
-      this.textcolor = 'text-[#314158]';
-      this.badgecolor = 'secondary';
-      this.bgcolor = 'bg-[#F8FAFC]';
+      this.textcolor.set('text-[#314158]');
+      this.badgecolor.set('secondary');
+      this.bgcolor.set('bg-[#F8FAFC]');
     } else if (this.tasks().taskstats === 'Complete') {
-      this.textcolor = 'text-green-700';
-      this.badgecolor = 'success';
-      this.bgcolor = 'bg-green-100';
+      this.textcolor.set('text-green-700');
+      this.badgecolor.set('success');
+      this.bgcolor.set('bg-green-100');
     } else if (this.tasks().taskstats === 'In Progress') {
-      this.textcolor = 'text-[#1447E6]';
-      this.badgecolor = 'primary';
-      this.bgcolor = 'bg-[#EFF6FF]';
+      this.textcolor.set('text-[#1447E6]');
+      this.badgecolor.set('primary');
+      this.bgcolor.set('bg-[#EFF6FF]');
     }
   }
   deletetask(e: string) {

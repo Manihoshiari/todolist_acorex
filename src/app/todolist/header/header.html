@@ -1,6 +1,6 @@
 <header class="pt-16">
   <div class="flex justify-between">
-    <div>
+    <div class="flex flex-col gap-2">
       <p class="font-semibold text-2xl text-[#09090B] leading-[150%]">Welcome Back!</p>
       <p class="text-[#737373] text-[16px] font-normal">
         {{
@@ -20,6 +20,6 @@
       placeholder="Filter the tasks..."
       (onValueChanged)="search($event)"
     ></ax-text-box>
-    <ax-button color="dark" class="" text="Add Task" (onClick)="openform()"></ax-button>
+    <ax-button color="dark" text="Add Task" (onClick)="openform()"></ax-button>
   </div>
 }
