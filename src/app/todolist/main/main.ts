@@ -33,8 +33,8 @@ export class Main implements OnInit {
 
   formValue(formTasks: newTask) {
     this.find.set(this.saveService.datasource.find((v) => v.id === formTasks.assignees));
-
-    this.tasks.update((old) => [...old, formTasks]);
+    formTasks.assignees=this.find()?.img
+    this.tasks.update((old) => [ formTasks,...old]);
     this.visible.set(false);
     this.saveService.saveitem(this.tasks());
 
