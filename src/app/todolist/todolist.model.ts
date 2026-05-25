@@ -10,7 +10,7 @@ export interface newTask{
     
 }
 export interface assignees{
-    id:string
-    name:string
-    img:string
+    id?:string
+    value?:string
+    img?:string
 }

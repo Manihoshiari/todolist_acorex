@@ -1,19 +1,25 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { newTask } from './todolist.model';
-
-
+import { assignees, newTask } from './todolist.model';
 
 @Injectable({ providedIn: 'root' })
 export class todolistService {
-    getdata(){
-        return this.datasource
-    }
-datasource=[{
-    id:'1',
-    value:'mani'
-},
-{
-    id:'2',
-    value:'ali'
-}]
+  tasks!: newTask;
+  getdata() {
+    return this.datasource;
+  }
+  saveitem(tasks: newTask[]) {
+    localStorage.setItem('task', JSON.stringify(tasks));
+  }
+  datasource:assignees[] = [
+    {
+      id: '1',
+      value: 'mani',
+      img: 'Rectangle 2 (1).svg',
+    },
+    {
+      id: '2',
+      value: 'ali',
+      img: 'Rectangle 4 (1).svg',
+    },
+  ];
 }

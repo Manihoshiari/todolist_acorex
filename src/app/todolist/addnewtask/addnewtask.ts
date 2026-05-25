@@ -1,22 +1,21 @@
-import { Component, EventEmitter, Output, output } from '@angular/core';
-import { AXButtonComponent } from "@acorex/components/button";
-import { AXDecoratorGenericComponent } from "@acorex/components/decorators";
+import { Component, output } from '@angular/core';
+import { AXButtonComponent } from '@acorex/components/button';
+
+import { AXUploaderZoneDirective } from '@acorex/cdk/uploader';
+import { AXUploaderBrowseDirective } from '@acorex/cdk/uploader';
 
 @Component({
   selector: 'app-addnewtask',
-  imports: [AXButtonComponent, AXDecoratorGenericComponent],
+  imports: [AXButtonComponent, AXUploaderBrowseDirective, AXUploaderZoneDirective],
   templateUrl: './addnewtask.html',
   styleUrl: './addnewtask.css',
 })
 export class Addnewtask {
- 
-  @Output() openForm=new EventEmitter()
-  add(){
+  openForm = output();
 
-  }
-  create(){
-    this.openForm.emit()
+  
 
-
+  create() {
+    this.openForm.emit();
   }
 }

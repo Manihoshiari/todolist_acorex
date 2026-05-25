@@ -4,36 +4,32 @@ import { newTask } from '../todolist.model';
 import { FormsModule } from '@angular/forms';
 import { AXTextBoxComponent } from '@acorex/components/text-box';
 import { AXButtonComponent } from '@acorex/components/button';
-import { AXDecoratorIconComponent } from "@acorex/components/decorators";
+import { AXDecoratorIconComponent } from '@acorex/components/decorators';
 import { AXValueChangedEvent } from '@acorex/cdk/common';
 @Component({
   selector: 'app-header',
-  imports: [FormsModule, AXTextBoxComponent, AXButtonComponent, AXDecoratorIconComponent],
+  imports: [FormsModule, AXTextBoxComponent, AXButtonComponent, ],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header implements OnInit{
-  searchsub=new Subject<string>()
-  searchvalue=output<string>()
-  open=output()
-  tasks=input.required<newTask[]>()
-  visible=input.required()
-  openform(){
-    this.open.emit()
+export class Header implements OnInit {
+  searchSub = new Subject<string>();
+  searchValue = output<string>();
+  open = output();
+  tasks = input.required<newTask[]>();
+  visible = input.required();
+  openform() {
+    this.open.emit();
   }
   ngOnInit(): void {
-    this.searchsub.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe((v)=>{
-      this.emitsearch(v)
-    })
+    this.searchSub.pipe(debounceTime(300), distinctUntilChanged()).subscribe((v) => {
+      this.emitsearch(v);
+    });
   }
-  emitsearch(value:string){
-    this.searchvalue.emit(value)
+  emitsearch(value: string) {
+    this.searchValue.emit(value);
   }
-  search(e:AXValueChangedEvent){
-this.searchsub.next(e.value)
-
+  search(e: AXValueChangedEvent) {
+    this.searchSub.next(e.value);
   }
 }

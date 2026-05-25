@@ -1,17 +1,25 @@
 <header class="pt-16">
-   
-    <div class="flex justify-between">
-        <div>
-        <p class="font-semibold text-2xl text-[#09090B] leading-[150%]">Welcome Back!</p>
-        <p class="text-[#737373] text-[16px] font-normal">{{tasks().length>0 ? "Here’s a list of your tasks for this month.":"Don't forget to add your new tasks for this month!"}}</p>
+  <div class="flex justify-between">
+    <div>
+      <p class="font-semibold text-2xl text-[#09090B] leading-[150%]">Welcome Back!</p>
+      <p class="text-[#737373] text-[16px] font-normal">
+        {{
+          tasks().length > 0 && !visible()
+            ? 'Here’s a list of your tasks for this month.'
+            : "Don't forget to add your new tasks for this month!"
+        }}
+      </p>
     </div>
-    <img src="public/Rectangle 2.svg" alt="">
-    </div>
-    
+    <img src="Rectangle 2.svg" alt="" />
+  </div>
 </header>
-@if (tasks().length>0||!visible) {
-    <div class="flex justify-between pt-8">
-        <ax-text-box class="w-full sm:w-[320px]" placeholder="Filter the tasks..." (onValueChanged)="search($event)"></ax-text-box>
-        <ax-button color="dark" class="" text="Add Task" (onClick)="openform()"></ax-button>
-    </div> 
+@if (tasks().length > 0 && !visible()) {
+  <div class="flex justify-between pt-8 gap-4">
+    <ax-text-box
+      class="w-full sm:w-[320px]"
+      placeholder="Filter the tasks..."
+      (onValueChanged)="search($event)"
+    ></ax-text-box>
+    <ax-button color="dark" class="" text="Add Task" (onClick)="openform()"></ax-button>
+  </div>
 }
